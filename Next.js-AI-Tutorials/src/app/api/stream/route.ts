@@ -1,13 +1,15 @@
 import { streamText } from "ai";
 import { openai } from "@/lib/openai";
+// import { anthropic } from "@/lib/anthropic";
 
 export async function POST(req: Request) {
   try {
     const { prompt } = await req.json();
 
     const result = streamText({
-      // model: openai("gpt-4o-mini"),
-      model: openai("gpt-5"),
+      // model: openai("gpt-4o-mini"), // openrouter openai model
+      // model: anthropic("claude-3-haiku"), // openrouter anthropic model
+      model: openai("o4-mini"), // kognitwin openai model
       prompt,
     });
 
